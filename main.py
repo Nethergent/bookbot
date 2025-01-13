@@ -4,8 +4,14 @@ def main():
     word_count = count_words(text)
     character_count = count_characters(text)
 
+    # begin report
     print(f"{word_count} words found in the document.")
-    print(f"{character_count}")
+    print()
+
+    for char, count in sorted(character_count.items()):
+        if char.isalpha():
+            print(f"The {char} character has appeared {count} times")
+    print("--- End Report ---")
 
 def open_book_text(path):
     with open(path) as f:
@@ -27,6 +33,7 @@ def count_characters(text):
 
         else:
             characters[c] += 1
+
     return characters
 
 main()
